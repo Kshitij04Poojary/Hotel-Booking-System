@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Rooms - Django Hotel Management</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>View Rooms</h1>
+        {% for room in rooms %}
+            <div class="room">
+                <h2>{{ room.room_type }}</h2>
+                <p>Room Number: {{ room.room_number }}</p>
+                <p>Price: ${{ room.price }}</p>
+                <p>Status: {% if room.is_available %}Available{% else %}Occupied{% endif %}</p>
+                <a href="{% url 'book_room' room_id=room.id %}" class="book-button">Book</a>
+            </div>
+        {% endfor %}
+        
+    </div>
+</body>
+</html>
